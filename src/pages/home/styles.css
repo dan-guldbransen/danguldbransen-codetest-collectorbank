@@ -1,0 +1,9 @@
+.home-container {
+  position: relative;
+  display: block;
+  margin: auto;
+  padding: 32px;
+  height: 100%;
+  max-width: 800px;
+  background-color: #fff;
+}
