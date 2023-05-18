@@ -1,71 +1,73 @@
-import styled from 'styled-components';
+import React from 'react';
+import { Box, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
-const HeaderContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`;
+const Header = () => {
+  const theme = useTheme();
 
-const HeaderText = styled.h1`
-  font-size: 30px;
-  margin-top: 32px;
-  font-weight: 700;
-`;
+  const styles = {
+    headerContainer: {
+      width: '100%',
+      display: 'grid',
+      alignItems: 'center',
+      marginBottom: '32px',
+      gridTemplateColumns: '1fr 1fr',
+    },
+    headerText: {
+      fontSize: '32px',
+      fontWeight: 700,
+      marginBottom: '32px',
+    },
+    costContainer: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+    },
+    costBox: {
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      textAlign: 'center',
+      padding: '32px 16px',
+      width: '330px',
+      borderRadius: '4px',
+      backgroundColor: `${theme.palette.primary.main}`,
+      zIndex: 0,
+    },
+    costCalculated: {
+      fontSize: '18px',
+      marginBottom: '8px',
+      fontWeight: 700,
+      color: `${theme.palette.common.white}`,
+    },
+    costArrow: {
+      position: 'absolute',
+      bottom: -30,
+      left: 50,
+      height: 0,
+      zIndex: -1,
+      borderTop: '60px solid transparent',
+      borderBottom: '60px solid transparent',
+      borderLeft: `60px solid ${theme.palette.primary.main}`,
+    },
+  };
 
-const CostContainer = styled.h1`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-end;
-`;
-
-const CostBox = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 24px;
-  width: 300px;
-  border-radius: 5px;
-  background-color: #6b1fae;
-  z-index: 0;
-`;
-
-const CostText = styled.h2`
-  font-size: ${(props) => props.theme.fontSizes.l};
-  margin-bottom: 8px;
-  font-weight: 700;
-  color: ${(props) => props.theme.colors.white};
-`;
-
-const CostCalculated = styled.h2`
-  font-size: ${(props) => props.theme.fontSizes.l};
-  font-weight: 700;
-  color: ${(props) => props.theme.colors.white};
-`;
-
-const CostArrow = styled.div`
-  position: absolute;
-  bottom: -30px;
-  left: 50px;
-  height: 0;
-  z-index: -1;
-  border-top: 60px solid transparent;
-  border-bottom: 60px solid transparent;
-  border-left: 60px solid ${(props) => props.theme.colors.purple};
-`;
-
-const Header: React.FC = () => {
   return (
-    <HeaderContainer>
-      <HeaderText>Lånekalkyl</HeaderText>
-      <CostContainer>
-        <CostBox>
-          <CostText>Exempel på månadskostnad</CostText>
-          <CostCalculated>10 000 SEK / mån</CostCalculated>
-          <CostArrow />
-        </CostBox>
-      </CostContainer>
-    </HeaderContainer>
+    <Box sx={styles.headerContainer}>
+      <Typography variant='h1' sx={styles.headerText}>
+        Lånekalkyl
+      </Typography>
+      <Box sx={styles.costContainer}>
+        <Box sx={styles.costBox}>
+          <Typography variant='h2' sx={styles.costCalculated}>
+            Exempel på månadskostnad
+          </Typography>
+          <Typography variant='h2' sx={styles.costCalculated}>
+            10 000 SEK / mån
+          </Typography>
+          <Box sx={styles.costArrow} />
+        </Box>
+      </Box>
+    </Box>
   );
 };
 export default Header;

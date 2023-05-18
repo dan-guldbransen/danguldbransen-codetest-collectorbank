@@ -2,13 +2,65 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, GlobalStyles } from '@mui/material';
+import { theme } from './styles/theme';
+
+const inputGlobalStyles = (
+  <GlobalStyles
+    styles={{
+      a: {
+        textDecoration: 'none',
+        cursor: 'pointer',
+        color: 'inherit',
+      },
+      body: {
+        margin: 0,
+        padding: 0,
+        boxSizing: 'border-box',
+        backgroundColor: `${theme.palette.background}`,
+      },
+      '*': {
+        boxSizing: 'border-box',
+      },
+      html: {
+        margin: 0,
+        padding: 0,
+      },
+      h1: {
+        margin: 0,
+        padding: 0,
+      },
+      h2: {
+        margin: 0,
+        padding: 0,
+      },
+      h3: {
+        margin: 0,
+        padding: 0,
+      },
+      p: {
+        margin: 0,
+        padding: 0,
+      },
+      input: {
+        margin: 0,
+        padding: 0,
+      },
+    }}
+  />
+);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+      <CssBaseline />
+      {inputGlobalStyles}
+    </ThemeProvider>
   </React.StrictMode>
 );
 

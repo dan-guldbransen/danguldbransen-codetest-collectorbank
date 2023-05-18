@@ -1,51 +1,63 @@
-import Header from './components/Header';
-import YearSlider from './components/MuiSlider/yearslider';
-import AmountSlider from './components/MuiSlider/amountslider';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import { Box, Typography, Button } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import Header from './components/header';
+import YearSlider from './components/slider/years';
+import AmountSlider from './components/slider/amount';
 
-const Container = styled.div`
-  position: relative;
-  display: block;
-  margin: auto;
-  padding: 32px;
-  height: 100%;
-  max-width: 800px;
-  background-color: #fff;
-}`;
+const App = () => {
+  const theme = useTheme();
+  const [amount, setAmount] = useState(20000);
+  const [years, setYears] = useState(2);
 
-const SubHeader = styled.h2`
-  font-size: 18px;
-  color: #717171;
-  margin-top: 32px;
-}`;
+  const styles = {
+    container: {
+      position: 'relative',
+      display: 'block',
+      margin: 'auto',
+      height: '100%',
+      padding: '51px 64px 52px 64px',
+      maxWidth: 800,
+      backgroundColor: `${theme.palette.common.white}`,
+    },
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-`;
+    subheader: {
+      fontSize: '16px',
+      marginBottom: '14px',
+      fontWeight: 700,
+      color: `${theme.palette.grey[700]}`,
+    },
+    buttonWrapper: {
+      paddingTop: '24px',
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'flex-end',
+    },
+    sliderBox: {
+      width: '100%',
+    },
+  };
 
-const Button = styled.button`
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 32px;
-}`;
-
-const Home: React.FC = () => {
   return (
-    <Container>
+    <Box sx={styles.container}>
       <Header />
-      <SubHeader>Lånebelopp</SubHeader>
-      <AmountSlider />
-      <SubHeader>Återbetalningstid</SubHeader>
-      <YearSlider />
-      <ButtonWrapper>
-        <Button>Till ansökan</Button>
-      </ButtonWrapper>
-    </Container>
+      <Typography variant='h2' sx={styles.subheader}>
+        Lånebelopp
+      </Typography>
+      <Box sx={styles.sliderBox}>
+        <AmountSlider />
+      </Box>
+      <Typography variant='h2' sx={styles.subheader}>
+        Återbetalningstid
+      </Typography>
+      <Box sx={styles.sliderBox}>
+        <YearSlider />
+      </Box>
+      <Box sx={styles.buttonWrapper}>
+        <Button component='button'>Till ansökan</Button>
+      </Box>
+    </Box>
   );
 };
 
-export default Home;
+export default App;
