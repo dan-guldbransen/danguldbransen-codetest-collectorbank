@@ -1,15 +1,18 @@
 import React from 'react';
-import { ISliderProps } from '../../../types/global';
 import { yearMarks } from '../../../utils/yearmarks';
 
 // Material UI
 import Slider from '@mui/material/Slider';
 import { useTheme } from '@mui/material/styles';
 
-const YearSlider: React.FC<ISliderProps> = ({
-  handleCommitChange,
-  handleSliderChange,
-}) => {
+interface IYearsProps {
+  handleOnChangeCommitted: (
+    event: React.SyntheticEvent | Event,
+    value: number | Array<number>
+  ) => void;
+}
+
+const YearSlider: React.FC<IYearsProps> = ({ handleOnChangeCommitted }) => {
   const theme = useTheme();
 
   const styles = {
@@ -35,8 +38,7 @@ const YearSlider: React.FC<ISliderProps> = ({
       valueLabelFormat={formatValueLabel}
       step={null}
       marks={yearMarks}
-      onChangeCommitted={handleCommitChange}
-      onChange={handleSliderChange}
+      onChangeCommitted={handleOnChangeCommitted}
     />
   );
 };

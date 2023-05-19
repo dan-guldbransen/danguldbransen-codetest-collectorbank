@@ -1,15 +1,18 @@
 import React from 'react';
-import { ISliderProps } from '../../../types/global';
 import { amountMarks } from '../../../utils/amountmarks';
 
 // Material UI
 import Slider from '@mui/material/Slider';
 import { useTheme } from '@mui/material/styles';
 
-const AmountSlider: React.FC<ISliderProps> = ({
-  handleCommitChange,
-  handleSliderChange,
-}) => {
+interface IAmountProps {
+  handleOnChangeCommitted: (
+    event: React.SyntheticEvent | Event,
+    value: number | Array<number>
+  ) => void;
+}
+
+const AmountSlider: React.FC<IAmountProps> = ({ handleOnChangeCommitted }) => {
   const theme = useTheme();
   const styles = {
     slider: {
@@ -36,8 +39,7 @@ const AmountSlider: React.FC<ISliderProps> = ({
         valueLabelFormat={formatValueLabel}
         step={null}
         marks={amountMarks}
-        onChangeCommitted={handleCommitChange}
-        onChange={handleSliderChange}
+        onChangeCommitted={handleOnChangeCommitted}
       />
     </>
   );

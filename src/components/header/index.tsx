@@ -5,9 +5,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 
-interface IHeaderProps {}
+interface IHeaderProps {
+  years: number;
+  amount: number;
+  yearsInterest: number;
+  monthlyInterest: number;
+}
 
-const Header: React.FC<IHeaderProps> = () => {
+const Header: React.FC<IHeaderProps> = ({ years, amount }) => {
   const theme = useTheme();
 
   const styles = {
@@ -56,6 +61,9 @@ const Header: React.FC<IHeaderProps> = () => {
     },
   };
 
+  const yearsInterest = 9.9;
+  const monthlyInterest = 0.00825;
+
   return (
     <Box sx={styles.headerContainer}>
       <Typography variant='h1' sx={styles.headerText}>
@@ -67,7 +75,13 @@ const Header: React.FC<IHeaderProps> = () => {
             Exempel på månadskostnad
           </Typography>
           <Typography variant='h2' sx={styles.costCalculated}>
-            {/* {monthlyCost} SEK / mån */}
+            {(
+              (amount *
+                monthlyInterest *
+                (1 + monthlyInterest) ** (yearsInterest * 12)) /
+              ((1 + monthlyInterest) ** (years * 12) - 1)
+            ).toFixed(0)}
+            kr / mån
           </Typography>
           <Box sx={styles.costArrow} />
         </Box>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import AmountSlider from './amount';
 import YearSlider from './years';
-import { ISliderProps } from '../../types/global';
 
 // Material UI
 import Box from '@mui/material/Box';
@@ -9,9 +8,21 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 
+interface ISliderProps {
+  handleOnYearsChangeCommitted: (
+    event: Event | React.SyntheticEvent<Element, Event>,
+    value: number | Array<number>
+  ) => void;
+
+  handleOnAmountChangeCommitted: (
+    event: Event | React.SyntheticEvent<Element, Event>,
+    value: number | Array<number>
+  ) => void;
+}
+
 const Sliders: React.FC<ISliderProps> = ({
-  handleCommitChange,
-  handleSliderChange,
+  handleOnYearsChangeCommitted,
+  handleOnAmountChangeCommitted,
 }) => {
   const theme = useTheme();
   const styles = {
@@ -57,20 +68,14 @@ const Sliders: React.FC<ISliderProps> = ({
       </Typography>
       <Box sx={styles.sliderBox}>
         <Stack sx={styles.placeHolder}>200 000 kr</Stack>
-        <AmountSlider
-          handleCommitChange={undefined}
-          handleSliderChange={undefined}
-        />
+        <AmountSlider handleOnChangeCommitted={handleOnAmountChangeCommitted} />
       </Box>
       <Typography variant='h2' sx={styles.subheader}>
         Lånetid
       </Typography>
       <Box sx={styles.sliderBox}>
         <Stack sx={styles.placeHolder}>10 år</Stack>
-        <YearSlider
-          handleCommitChange={undefined}
-          handleSliderChange={undefined}
-        />
+        <YearSlider handleOnChangeCommitted={handleOnYearsChangeCommitted} />
       </Box>
     </>
   );

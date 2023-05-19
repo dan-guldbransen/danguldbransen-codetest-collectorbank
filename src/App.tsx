@@ -7,18 +7,28 @@ import ApplyButton from './components/applybutton';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 
-interface IAppProps {}
+interface IAppProps {
+  yearsInterest: number;
+  monthlyInterest: number;
+}
 
-const App: React.FC<IAppProps> = () => {
+const App: React.FC<IAppProps> = ({ yearsInterest, monthlyInterest }) => {
   const theme = useTheme();
+  const [years, setYears] = useState<number>(6);
+  const [amount, setAmount] = useState<number>(110000);
 
-  const interestCost = (amount: number, months: number) => {
-    const interest = 9.9 / 100;
-    const monthlyInterest = interest / 12;
-    const monthlyCost =
-      (amount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -months));
-    const totalInterest = monthlyCost * months - amount;
-    return totalInterest;
+  const handleOnYearsChangeCommitted = (
+    event: Event | React.SyntheticEvent<Element, Event>,
+    value: number | Array<number>
+  ) => {
+    setYears(value as number);
+  };
+
+  const handleOnAmountChangeCommitted = (
+    event: Event | React.SyntheticEvent<Element, Event>,
+    value: number | Array<number>
+  ) => {
+    setAmount(value as number);
   };
 
   const styles = {
@@ -35,9 +45,17 @@ const App: React.FC<IAppProps> = () => {
 
   return (
     <Box sx={styles.container}>
-      <Header />
-      <Sliders />
-      <ApplyButton />
+      <Header
+        years={years}
+        amount={amount}
+        yearsInterest={yearsInterest}
+        monthlyInterest={monthlyInterest}
+      />
+      <Sliders
+        handleOnYearsChangeCommitted={handleOnYearsChangeCommitted}
+        handleOnAmountChangeCommitted={handleOnAmountChangeCommitted}
+      />
+      <ApplyButton amount={amount} months={0} />
     </Box>
   );
 };
