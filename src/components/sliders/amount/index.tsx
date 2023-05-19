@@ -1,7 +1,6 @@
 import React from 'react';
 import { amountMarks } from '../../../utils/amountmarks';
 
-// Material UI
 import Slider from '@mui/material/Slider';
 import { useTheme } from '@mui/material/styles';
 

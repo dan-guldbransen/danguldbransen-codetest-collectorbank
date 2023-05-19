@@ -1,8 +1,8 @@
 import React from 'react';
 
-//Material UI
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 
 interface IHeaderProps {
@@ -43,8 +43,21 @@ const Header: React.FC<IHeaderProps> = ({ years, amount }) => {
       backgroundColor: `${theme.palette.primary.main}`,
       zIndex: 0,
     },
+    costText: {
+      fontSize: '16px',
+      marginBottom: '8px',
+      fontWeight: 700,
+      color: `${theme.palette.common.white}`,
+    },
     costCalculated: {
-      fontSize: '18px',
+      fontSize: '20px',
+      marginBottom: '8px',
+      marginRight: '4px',
+      fontWeight: 700,
+      color: `${theme.palette.common.white}`,
+    },
+    perMonth: {
+      fontSize: '16px',
       marginBottom: '8px',
       fontWeight: 700,
       color: `${theme.palette.common.white}`,
@@ -71,18 +84,28 @@ const Header: React.FC<IHeaderProps> = ({ years, amount }) => {
       </Typography>
       <Box sx={styles.costContainer}>
         <Box sx={styles.costBox}>
-          <Typography variant='h2' sx={styles.costCalculated}>
+          <Typography variant='h2' sx={styles.costText}>
             Exempel på månadskostnad
           </Typography>
-          <Typography variant='h2' sx={styles.costCalculated}>
-            {(
-              (amount *
-                monthlyInterest *
-                (1 + monthlyInterest) ** (yearsInterest * 12)) /
-              ((1 + monthlyInterest) ** (years * 12) - 1)
-            ).toFixed(0)}
-            kr / mån
-          </Typography>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Typography variant='h2' sx={styles.costCalculated}>
+              {(
+                (amount *
+                  monthlyInterest *
+                  (1 + monthlyInterest) ** (yearsInterest * 12)) /
+                ((1 + monthlyInterest) ** (years * 12) - 1)
+              ).toFixed(0)}
+            </Typography>
+            <Typography variant='h2' sx={styles.perMonth}>
+              kr / mån
+            </Typography>
+          </Stack>
           <Box sx={styles.costArrow} />
         </Box>
       </Box>

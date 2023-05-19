@@ -3,7 +3,6 @@ import Header from './components/header';
 import Sliders from './components/sliders';
 import ApplyButton from './components/applybutton';
 
-// Material UI
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 

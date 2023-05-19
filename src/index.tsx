@@ -59,7 +59,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <App yearsInterest={0} monthlyInterest={0} />
       <CssBaseline />
       {inputGlobalStyles}
     </ThemeProvider>

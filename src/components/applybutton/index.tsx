@@ -1,7 +1,5 @@
 import React from 'react';
 
-// Material UI
-import useTheme from '@mui/material/styles/useTheme';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
@@ -11,8 +9,6 @@ interface IApplyButtonProps {
 }
 
 const ApplyButton = ({ amount, years }: IApplyButtonProps) => {
-  const theme = useTheme();
-
   const url = new URL(
     `https://loan-application/?query=amount=${amount}&years=${years}`
   );
