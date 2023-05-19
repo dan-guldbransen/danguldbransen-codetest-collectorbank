@@ -40,16 +40,6 @@ const yearMarks = [
   },
 ];
 
-const valuetext = (value: number) => {
-  return `${value} år`;
-};
-
-const valueLabelFormat = (value: number) => {
-  return (
-    yearMarks.findIndex((yearMarks) => yearMarks.value === value) * 1 + 2 + 'år'
-  );
-};
-
 const YearSlider = () => {
   const theme = useTheme();
   const styles = {
@@ -59,16 +49,21 @@ const YearSlider = () => {
       border: `1px solid ${theme.palette.grey[300]}`,
     },
   };
+
+  const formatValueLabel = (value: number) => {
+    return `${value} år`;
+  };
+
   return (
     <Slider
-      aria-label='Restricted values'
+      sx={styles.slider}
+      aria-label='loan years'
       defaultValue={2}
       min={2}
       max={10}
-      valueLabelFormat={valueLabelFormat}
-      getAriaValueText={valuetext}
+      valueLabelDisplay='on'
+      valueLabelFormat={formatValueLabel}
       step={null}
-      valueLabelDisplay='auto'
       marks={yearMarks}
     />
   );

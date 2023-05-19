@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Header from './components/header';
 import YearSlider from './components/slider/years';
@@ -35,6 +35,15 @@ const App = () => {
     },
     sliderBox: {
       width: '100%',
+      position: 'relative',
+    },
+    placeHolder: {
+      position: 'absolute',
+      fontSize: '14px',
+      top: '10px',
+      right: '10px',
+      zIndex: 1,
+      color: `${theme.palette.grey[500]}`,
     },
   };
 
@@ -45,12 +54,14 @@ const App = () => {
         Lånebelopp
       </Typography>
       <Box sx={styles.sliderBox}>
+        <Stack sx={styles.placeHolder}>200 000 kr</Stack>
         <AmountSlider />
       </Box>
       <Typography variant='h2' sx={styles.subheader}>
         Återbetalningstid
       </Typography>
       <Box sx={styles.sliderBox}>
+        <Stack sx={styles.placeHolder}>10 år</Stack>
         <YearSlider />
       </Box>
       <Box sx={styles.buttonWrapper}>

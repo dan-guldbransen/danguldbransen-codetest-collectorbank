@@ -1,21 +1,18 @@
 import React from 'react';
-import { Slider, useTheme } from '@mui/material';
+import { Slider, Stack, Typography, useTheme } from '@mui/material';
 
 const amountMarks = [
   {
     value: 20000,
     label: '20 000 kr',
-    valueLabelDisplay: 'on',
   },
   {
     value: 30000,
     label: '30 000 kr',
-    valueLabelDisplay: 'on',
   },
   {
     value: 40000,
-    label: '20000 kr',
-    valueLabelDisplay: 'on',
+    label: '40 000 kr',
   },
   {
     value: 50000,
@@ -83,17 +80,9 @@ const amountMarks = [
   },
 ];
 
-const valueLabelFormat = (value: number) => {
-  return (
-    amountMarks.findIndex((amountMarks) => amountMarks.value === value) *
-      10000 +
-    20000 +
-    ' kr'
-  );
-};
-
 const AmountSlider = () => {
   const theme = useTheme();
+
   const styles = {
     slider: {
       color: `${theme.palette.primary.main}`,
@@ -102,18 +91,25 @@ const AmountSlider = () => {
     },
   };
 
+  const formatValueLabel = (value: number) => {
+    return `${value} kr`;
+  };
+
   return (
-    <Slider
-      sx={styles.slider}
-      aria-label='loan amount'
-      defaultValue={20000}
-      min={20000}
-      max={200000}
-      valueLabelFormat={valueLabelFormat}
-      valueLabelDisplay='auto'
-      step={null}
-      marks={amountMarks}
-    />
+    <>
+      <Slider
+        sx={styles.slider}
+        aria-label='loan amount'
+        defaultValue={20000}
+        track={'normal'}
+        min={20000}
+        max={200000}
+        valueLabelDisplay='on'
+        valueLabelFormat={formatValueLabel}
+        step={null}
+        marks={amountMarks}
+      />
+    </>
   );
 };
 
