@@ -7,14 +7,14 @@ import Button from '@mui/material/Button';
 
 interface IApplyButtonProps {
   amount: number;
-  months: number;
+  years: number;
 }
 
-const ApplyButton = ({ amount, months }: IApplyButtonProps) => {
+const ApplyButton = ({ amount, years }: IApplyButtonProps) => {
   const theme = useTheme();
 
   const url = new URL(
-    `https://loan-application/?query=amount=${amount}&months=${months}`
+    `https://loan-application/?query=amount=${amount}&years=${years}`
   );
 
   const onClickHandler = () => console.log(url);

@@ -55,7 +55,7 @@ const App: React.FC<IAppProps> = ({ yearsInterest, monthlyInterest }) => {
         handleOnYearsChangeCommitted={handleOnYearsChangeCommitted}
         handleOnAmountChangeCommitted={handleOnAmountChangeCommitted}
       />
-      <ApplyButton amount={amount} months={0} />
+      <ApplyButton amount={amount} years={years} />
     </Box>
   );
 };
