@@ -7,7 +7,13 @@ import ApplyButton from './components/applybutton';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 
-const App = () => {
+interface Props {
+  months: number;
+  monthsMarks: [];
+  setMonths: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const App: React.FC<Props> = () => {
   const theme = useTheme();
 
   const styles = {
@@ -26,7 +32,7 @@ const App = () => {
     <Box sx={styles.container}>
       <Header />
       <Sliders />
-      <ApplyButton />
+      <ApplyButton amount={0} months={0} />
     </Box>
   );
 };
