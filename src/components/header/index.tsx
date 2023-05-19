@@ -5,7 +5,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 
-const Header = () => {
+interface IHeaderProps {}
+
+const Header: React.FC<IHeaderProps> = () => {
   const theme = useTheme();
 
   const styles = {
@@ -65,7 +67,7 @@ const Header = () => {
             Exempel på månadskostnad
           </Typography>
           <Typography variant='h2' sx={styles.costCalculated}>
-            10 000 SEK / mån
+            {/* {monthlyCost} SEK / mån */}
           </Typography>
           <Box sx={styles.costArrow} />
         </Box>

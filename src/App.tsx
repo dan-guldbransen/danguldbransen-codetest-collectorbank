@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/header';
 import Sliders from './components/sliders';
 import ApplyButton from './components/applybutton';
@@ -7,8 +7,19 @@ import ApplyButton from './components/applybutton';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 
-const App: React.FC = () => {
+interface IAppProps {}
+
+const App: React.FC<IAppProps> = () => {
   const theme = useTheme();
+
+  const interestCost = (amount: number, months: number) => {
+    const interest = 9.9 / 100;
+    const monthlyInterest = interest / 12;
+    const monthlyCost =
+      (amount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -months));
+    const totalInterest = monthlyCost * months - amount;
+    return totalInterest;
+  };
 
   const styles = {
     container: {
@@ -26,7 +37,7 @@ const App: React.FC = () => {
     <Box sx={styles.container}>
       <Header />
       <Sliders />
-      <ApplyButton amount={0} months={0} />
+      <ApplyButton />
     </Box>
   );
 };
