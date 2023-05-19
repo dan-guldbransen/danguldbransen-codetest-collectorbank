@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './components/headers';
+import Header from './components/header';
 import Sliders from './components/sliders';
 import ApplyButton from './components/applybutton';
 
