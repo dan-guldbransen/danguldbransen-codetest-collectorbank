@@ -14,8 +14,7 @@ const ApplyButton = ({ amount, months }: IApplyButtonProps) => {
   const theme = useTheme();
 
   const url = new URL(
-    '',
-    `https://example.com/?query=amount=${amount}&months=${months}`
+    `https://loan-application/?query=amount=${amount}&months=${months}`
   );
 
   const onClickHandler = () => console.log(url);

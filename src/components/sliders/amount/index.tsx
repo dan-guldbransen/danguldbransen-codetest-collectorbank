@@ -4,6 +4,14 @@ import React from 'react';
 import Slider from '@mui/material/Slider';
 import { useTheme } from '@mui/material/styles';
 
+interface IAmountProps {
+  amountMarks: {
+    value: number;
+    label: string;
+  }[];
+  setAmount: React.Dispatch<React.SetStateAction<number>>;
+}
+
 const amountMarks = [
   {
     value: 20000,
@@ -83,8 +91,15 @@ const amountMarks = [
   },
 ];
 
-const AmountSlider = () => {
+const AmountSlider: React.FC<IAmountProps> = ({ amountMarks, setAmount }) => {
   const theme = useTheme();
+
+  const handleAmountChange = (
+    e: React.ChangeEvent<{}>,
+    newValue: number | number[]
+  ) => {
+    setAmount(newValue as number);
+  };
 
   const styles = {
     slider: {

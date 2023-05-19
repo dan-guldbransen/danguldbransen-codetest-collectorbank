@@ -8,10 +8,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 
-const Sliders = () => {
-  const [amount, setAmount] = useState(20000);
-  const [years, setYears] = useState(2);
-
+const Sliders: React.FC = () => {
   const theme = useTheme();
 
   const styles = {
@@ -59,7 +56,7 @@ const Sliders = () => {
         <AmountSlider />
       </Box>
       <Typography variant='h2' sx={styles.subheader}>
-        Återbetalningstid
+        Lånetid
       </Typography>
       <Box sx={styles.sliderBox}>
         <Stack sx={styles.placeHolder}>10 år</Stack>
