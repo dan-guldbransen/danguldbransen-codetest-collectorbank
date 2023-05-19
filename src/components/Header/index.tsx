@@ -1,5 +1,8 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+
+//Material UI
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 
 const Header = () => {

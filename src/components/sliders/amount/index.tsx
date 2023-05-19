@@ -1,5 +1,8 @@
 import React from 'react';
-import { Slider, Stack, Typography, useTheme } from '@mui/material';
+
+// Material UI
+import Slider from '@mui/material/Slider';
+import { useTheme } from '@mui/material/styles';
 
 const amountMarks = [
   {
