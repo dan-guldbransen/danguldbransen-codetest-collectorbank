@@ -91,15 +91,15 @@ const amountMarks = [
   },
 ];
 
-const AmountSlider: React.FC<IAmountProps> = ({ amountMarks, setAmount }) => {
+const AmountSlider = () => {
   const theme = useTheme();
 
-  const handleAmountChange = (
-    e: React.ChangeEvent<{}>,
-    newValue: number | number[]
-  ) => {
-    setAmount(newValue as number);
-  };
+  // const handleAmountChange = (
+  //   e: React.ChangeEvent<{}>,
+  //   newValue: number | number[]
+  // ) => {
+  //   setAmount(newValue as number);
+  // };
 
   const styles = {
     slider: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AmountSlider from './amount';
 import YearSlider from './years';
 
@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 
-const Sliders: React.FC = () => {
+const Sliders = () => {
   const theme = useTheme();
 
   const styles = {

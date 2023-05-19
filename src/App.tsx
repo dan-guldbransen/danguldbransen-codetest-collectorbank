@@ -7,13 +7,7 @@ import ApplyButton from './components/applybutton';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 
-interface Props {
-  months: number;
-  monthsMarks: [];
-  setMonths: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const App: React.FC<Props> = () => {
+const App: React.FC = () => {
   const theme = useTheme();
 
   const styles = {
