@@ -22,6 +22,10 @@ const Header: React.FC<IHeaderProps> = ({ years, amount }) => {
       alignItems: 'center',
       marginBottom: '32px',
       gridTemplateColumns: '1fr 1fr',
+      [theme.breakpoints.down('sm')]: {
+        gridTemplateColumns: '1fr',
+        alignItems: 'unset',
+      },
     },
     headerText: {
       fontSize: '32px',
@@ -38,7 +42,8 @@ const Header: React.FC<IHeaderProps> = ({ years, amount }) => {
       flexDirection: 'column',
       textAlign: 'center',
       padding: '32px 16px',
-      width: '330px',
+      width: '100%',
+      maxWidth: 330,
       borderRadius: '4px',
       backgroundColor: `${theme.palette.primary.main}`,
       zIndex: 0,

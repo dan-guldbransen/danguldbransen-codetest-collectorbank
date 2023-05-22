@@ -28,6 +28,15 @@ export const theme = createTheme({
       600: '#757575',
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   typography: {
     fontFamily: 'proxima nova, sans-serif',
   },
@@ -67,6 +76,9 @@ export const theme = createTheme({
           padding: 0,
           height: 40,
           borderRadius: 50,
+          '@media (max-width: 600px)': {
+            padding: 0,
+          },
         },
         track: {
           zIndex: 1,
@@ -105,6 +117,12 @@ export const theme = createTheme({
           borderRadius: 10,
           '&::before': {
             content: 'none',
+          },
+          '@media (max-width: 600px)': {
+            padding: ' 4px 5px',
+            borderRadius: 15,
+            right: 12,
+            top: 41,
           },
         },
       },
